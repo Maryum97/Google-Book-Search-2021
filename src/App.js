@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Books from './pages/Books';
 
 function App () {
   return (
     <div>
       <Navbar />
       <br></br>
-      <Button color='danger'>Danger!</Button>
+      <Books />
+      <Footer />
       </div>
   )
 }
