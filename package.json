@@ -18,5 +18,8 @@
     "url": "https://github.com/Maryum97/Google-Book-Search-2021/issues"
   },
   "homepage": "https://github.com/Maryum97/Google-Book-Search-2021#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9"
+  }
 }
