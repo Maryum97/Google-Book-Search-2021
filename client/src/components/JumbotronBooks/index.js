@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron } from 'reactstrap';
 
-function JumbotronBooks({ props }) {
+function JumbotronBooks(props) {
     return (
         <div>
             <Jumbotron>
