@@ -19,10 +19,6 @@ function App () {
 
           <Route exact path='/savedbooks' conponent={SavedBooks}></Route>
 
-          {/* <Route>
-            <NoMatch />
-          </Route> */}
-
         </Switch>
         <Footer />
       </div>
