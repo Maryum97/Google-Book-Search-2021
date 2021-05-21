@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Maryum97/Google-Book-Search-2021#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "mongoose": "^5.12.9",
     "react-dom": "^17.0.2",
