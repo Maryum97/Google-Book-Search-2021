@@ -5,9 +5,7 @@ import {
     Navbar,
     NavbarToggler,
     NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink
+    Nav
 } from 'reactstrap';
 
 function NavbarBooks() {
