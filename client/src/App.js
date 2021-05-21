@@ -15,13 +15,13 @@ function App () {
         <NavbarBooks />
         <Switch>
 
-          <Route exact path='/searchbooks' component={SearchBooks}></Route>
+          <Route exact path='/' component={SearchBooks}></Route>
 
           <Route exact path='/savedbooks' conponent={SavedBooks}></Route>
 
-          <Route>
+          {/* <Route>
             <NoMatch />
-          </Route>
+          </Route> */}
 
         </Switch>
         <Footer />
