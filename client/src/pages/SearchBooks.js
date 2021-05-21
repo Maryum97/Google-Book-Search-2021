@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import API from '../utils/API';
 
 // import components
 import Jumbotron from '../components/Jumbotron';
-import API from '../utils/API';
+import FormBooks from '../components/FormBooks';
 
 function SearchBooks() {
     // declare state variables
@@ -30,10 +31,11 @@ function SearchBooks() {
         <div>
             <Jumbotron
                     heading='Google Books Search'
-                    text='Search your books here'
+                    text='Search for your favourite books right here on this page :)'
                 />
+                <br></br>
             <Container>
-                Books here:)
+                <FormBooks />
             </Container>
         </div>
     )
