@@ -5,6 +5,7 @@ import API from '../utils/API';
 // import components
 import Jumbotron from '../components/Jumbotron';
 import FormBooks from '../components/FormBooks';
+import Results from '../components/Results';
 
 function SearchBooks() {
     // declare state variables
@@ -72,6 +73,7 @@ function SearchBooks() {
                 <br></br>
                 <Row>
                     <h2>Results</h2>
+                    <Results />
                 </Row>
             </Container>
         </div>
