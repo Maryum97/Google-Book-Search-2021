@@ -10,7 +10,7 @@ function SearchBooks() {
     // declare state variables
     const [book, setBook] = useState({});
     const [books, setBooks] = useState([]);
-    // const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('');
 
     // when the component mounts, make call to get books
     useEffect(() => {
@@ -26,7 +26,30 @@ function SearchBooks() {
         })
         .catch(err => console.log('error message: ' + err));
     }
-    
+
+    // declare function to get search results onto page
+    function getSearchResluts() {
+        
+    }
+
+    // declare function for event of change in form input
+    function handleInputChange (e) {
+        setSearch(e.target.value);
+    }
+
+    // declare function for event of clicking on submit button
+    function handleFormSubmit (e) {
+        e.preventDefault();
+        getSearchResluts(search);
+    }
+
+    // clear search
+    function clearSearch(e) {
+        e.preventDefault();
+        setSearch("");
+        searchBooks();
+    }
+
     return (
         <div>
             <Jumbotron
@@ -35,7 +58,12 @@ function SearchBooks() {
                 />
                 <br></br>
             <Container>
-                <FormBooks />
+                <FormBooks 
+                    value={search}
+                    handleInputChange={handleInputChange}
+                    handleFormSubmit={handleFormSubmit}
+                    clearSearch={clearSearch}
+                />
             </Container>
         </div>
     )
