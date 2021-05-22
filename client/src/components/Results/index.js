@@ -25,21 +25,23 @@ function Results(props) {
 
     // declare function to handle the event of saving a book
     function handleSave(book) {
-        if (savedBooks.map(book => book.title).includes(book.title)) {
-            API.deleteBook(book.title)
-                .then(deletedBook => {
-                    savedBooks.filter(book => book.title !== deletedBook.title)
-                })
-                .catch(err => console.log('error message: ' + err));
-        }
+        // if (savedBooks.map(book => book.title).includes(book.title)) {
+        //     API.deleteBook(book.title)
+        //         .then(deletedBook => {
+        //             savedBooks.filter(book => book.title !== deletedBook.title)
+        //         })
+        //         .catch(err => console.log('error message: ' + err));
+        // }
 
-        else {
+        // else {
             API.saveBook(book)
                 .then(savedBook => {
+                    console.log('Hello, testing!');
                     setSavedBooks(savedBooks.concat([savedBook]))
                 })
                 .catch(err => console.log('error message: ' + err));
-        }
+        // }
+        console.log(book);
     }
 
     return (
@@ -55,7 +57,7 @@ function Results(props) {
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
                                 <CardText>{result.volumeInfo.description}</CardText>
                                 <Button
-                                    onClick={handleSave}
+                                    onClick={() => handleSave(result)}
                                 >
                                     Save
                                 </Button>
