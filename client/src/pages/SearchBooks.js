@@ -9,7 +9,6 @@ import Results from '../components/Results';
 
 function SearchBooks() {
     // declare state variables
-    const [book, setBook] = useState({});
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState('');
 
@@ -20,22 +19,22 @@ function SearchBooks() {
 
     // declare function to load books
     const searchBooks = (query) => {
-        API.getBook(query)
-            .then(books => {
-                setBook(book);
-                setBooks(books);
+        API.searchBook(query)
+            .then(res => {
+                let results = res.data.items;
+
+                results = results.map(result => {
+                    result = {
+                        _id: result.id,
+                        title: result.volumeInfo.title,
+                        authors: result.volumeInfo.authors,
+                        description: result.volumeInfo.description
+                    }
+                    return result;
+                })
+                setBooks({books: results});
             })
             .catch(err => console.log('error message: ' + err));
-    }
-
-    // declare function to get search results onto page
-    function getSearchResults(bookData) {
-        return {
-            title: bookData.title,
-            author: bookData.author,
-            synopsis: bookData.synopsis,
-            date: bookData.date
-        }
     }
 
     // declare function for event of change in form input
@@ -46,14 +45,7 @@ function SearchBooks() {
     // declare function for event of clicking on submit button
     function handleFormSubmit(e) {
         e.preventDefault();
-        getSearchResults(search);
-    }
-
-    // clear search
-    function clearSearch(e) {
-        e.preventDefault();
-        setSearch("");
-        searchBooks();
+        searchBooks(search);
     }
 
     return (
@@ -68,12 +60,13 @@ function SearchBooks() {
                     value={search}
                     handleInputChange={handleInputChange}
                     handleFormSubmit={handleFormSubmit}
-                    clearSearch={clearSearch}
                 />
                 <br></br>
                 <Row>
                     <h2>Results</h2>
-                    <Results />
+                    <Results 
+                        books={books}
+                    />
                 </Row>
             </Container>
         </div>
