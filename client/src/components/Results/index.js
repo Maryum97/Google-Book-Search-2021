@@ -44,7 +44,7 @@ function Results(props) {
 
     return (
         <div>
-            {props.books}
+            {props.books.length}
             {/* {!savedBooks ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
