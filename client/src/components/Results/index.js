@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 import API from '../../utils/API';
 
-function Results() {
+function Results(props) {
     // declare state variables
     const [savedBooks, setSavedBooks] = useState([]);
 
@@ -44,7 +44,8 @@ function Results() {
 
     return (
         <div>
-            {!savedBooks ? (
+            {props.books['title']}
+            {/* {!savedBooks ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
@@ -63,7 +64,7 @@ function Results() {
                         </Card>
                     ))}
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

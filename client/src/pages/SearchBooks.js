@@ -19,8 +19,10 @@ function SearchBooks() {
 
     // declare function to load books
     const searchBooks = (query) => {
+        console.log(query);
         API.searchBook(query)
             .then(res => {
+                console.log(res.data);
                 let results = res.data.items;
 
                 results = results.map(result => {
@@ -33,6 +35,7 @@ function SearchBooks() {
                     return result;
                 })
                 setBooks({books: results});
+                console.log(books);
             })
             .catch(err => console.log('error message: ' + err));
     }
