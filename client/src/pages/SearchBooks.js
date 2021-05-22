@@ -23,17 +23,18 @@ function SearchBooks() {
             .then(res => {
                 let results = res.data.items;
 
-                // results = results.map(result => {
-                //     result = {
-                //         _id: result.id,
-                //         title: result.volumeInfo.title,
-                //         authors: result.volumeInfo.authors,
-                //         description: result.volumeInfo.description
-                //     }
-                //     return result;
-                // })
+                results = results.map(result => {
+                    result = {
+                        _id: result.id,
+                        title: result.volumeInfo.title,
+                        authors: result.volumeInfo.authors,
+                        description: result.volumeInfo.description
+                    }
+                    return result;
+                })
+
                 console.log('results: ' + results, res.data.items);
-                setBooks(books, res.data.items);
+                setBooks(res.data.items);
             })
             .catch(err => console.log('error message: ' + err));
     }

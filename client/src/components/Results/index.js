@@ -44,17 +44,16 @@ function Results(props) {
 
     return (
         <div>
-            {props.books.length}
-            {/* {!savedBooks ? (
+            {!props.books ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
-                    {savedBooks.map(result => (
-                        <Card>
+                    {props.books.map(result => (
+                        <Card key={props.id}>
                             <CardBody>
-                                <CardTitle tag="h5">{result.title}, by {result.author}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">{result.date}</CardSubtitle>
-                                <CardText>{result.synopsis}</CardText>
+                                <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
+                                <CardText>{result.volumeInfo.description}</CardText>
                                 <Button
                                     onClick={handleSave}
                                 >
@@ -64,7 +63,7 @@ function Results(props) {
                         </Card>
                     ))}
                 </div>
-            )} */}
+            )}
         </div>
     )
 }
