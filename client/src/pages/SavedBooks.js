@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import API from '../utils/API';
 
 // import components
@@ -8,21 +8,21 @@ import Results from '../components/Results';
 
 function SavedBooks() {
     // declare state variables
-    const [savedBooks, setSavedBooks] = useState([]);
+    // const [savedBooks, setSavedBooks] = useState([]);
 
     // when the component mounts, make call to get saved books
-    useEffect(() => {
-        renderSavedBooks();
-    });
+    // useEffect(() => {
+    //     renderSavedBooks();
+    // });
 
     // declare function to render saved books
-    function renderSavedBooks() {
-        API.savedBooks()
-            .then(savedBooks => {
-                setSavedBooks(savedBooks)
-            })
-            .catch(err => console.log('error message: ' + err));
-    }
+    // function renderSavedBooks() {
+    //     API.savedBooks()
+    //         .then(savedBooks => {
+    //             setSavedBooks(savedBooks)
+    //         })
+    //         .catch(err => console.log('error message: ' + err));
+    // }
 
     return (
         <div>
@@ -33,7 +33,7 @@ function SavedBooks() {
             <br></br>
             <Container>
                 <h2>Saved Books</h2>
-                <Results books={savedBooks}/>
+                {/* <Results books={savedBooks}/> */}
             </Container>
         </div>
     )

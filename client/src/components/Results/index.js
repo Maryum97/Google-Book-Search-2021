@@ -44,7 +44,7 @@ function Results(props) {
 
     return (
         <div>
-            {!props.books.length ? (
+            {!props.books ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
@@ -63,8 +63,7 @@ function Results(props) {
                         </Card>
                     ))}
                 </div>
-            )
-            })
+            )}
         </div>
     )
 }
