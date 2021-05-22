@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import SavedBooks from './pages/SavedBooks';
 import SearchBooks from './pages/SearchBooks';
-import NoMatch from './pages/NoMatch';
 
 import NavbarBooks from './components/NavbarBooks';
 import Footer from './components/Footer';
