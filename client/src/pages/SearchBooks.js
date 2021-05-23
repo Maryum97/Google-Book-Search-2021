@@ -22,22 +22,21 @@ function SearchBooks() {
         console.log(query);
         API.getBooks(query)
             .then(res => {
-                let results = res.data.items;
-                console.log(res.data.items);
+                let results = res.data;
+                console.log(res.data);
 
-                results = results.map(result => {
+                let bookResults = results.map(result => {
                     result = {
                         _id: result.id,
-                        title: result.volumeInfo.title,
-                        authors: result.volumeInfo.authors,
-                        description: result.volumeInfo.description,
-                        link: result.volumeInfo.previewLink
+                        title: result.title,
+                        authors: result.authors,
+                        description: result.description,
+                        link: result.previewLink
                     }
                     return result;
                 })
-                console.log(results);
-                setBooks(res.data.items);
-                console.log(res.data.items);
+                console.log(bookResults);
+                setBooks(bookResults);
             })
             .catch(err => console.log('error message: ' + err));
     }

@@ -63,10 +63,10 @@ function SearchResults(props) {
                     {props.books.map(result => (
                         <Card>
                             <CardBody key={result.id}>
-                                <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
-                                <CardText>{result.volumeInfo.description}</CardText>
+                                <CardTitle tag="h5">{result.title}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.authors}</CardSubtitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
+                                <CardText>{result.description}</CardText>
                                 <Button
                                     onClick={() => handleSave(result)} 
                                 >
