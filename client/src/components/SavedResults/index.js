@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 import API from '../../utils/API';
 
-function SavedResults() {
+function SavedResults(props) {
     // declare state variables
     const [savedBooks, setSavedBooks] = useState([]);
 
@@ -56,13 +56,13 @@ function SavedResults() {
 
     return (
         <div>
-            {!savedBooks ? (
+            {!props.books ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
-                    {savedBooks.map(result => (
+                    {props.books.map(result => (
                         <Card>
-                            <CardBody>
+                            <CardBody key={result.id}>
                                 <CardTitle tag="h5">{result.title}</CardTitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.authors}</CardSubtitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
