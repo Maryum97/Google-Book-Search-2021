@@ -26,14 +26,8 @@ function Results(props) {
 
     // declare function to handle the event of saving a book
     function handleSave(book) {
-        // if (savedBooks.map(book => book.title).includes(book.title)) {
-        //     API.deleteBook(book.title)
-        //         .then(deletedBook => {
-        //             savedBooks.filter(book => book.title !== deletedBook.title)
-        //         })
-        //         .catch(err => console.log('error message: ' + err));
-        // }
 
+        // define object that holds book properties
         const bookToSave = {
             _id: book.id,
             title: book.volumeInfo.title,
@@ -41,13 +35,22 @@ function Results(props) {
             description: book.volumeInfo.description,
             link: book.volumeInfo.link
         }
-        // else {
+
+        if (savedBooks.map(book => book.title).includes(book.title)) {
+            API.deleteBook(book.title)
+                .then(deletedBook => {
+                    savedBooks.filter(book => book.title !== deletedBook.title)
+                })
+                .catch(err => console.log('error message: ' + err));
+        }
+
+        else {
         API.saveBook(bookToSave)
             .then(savedBook => {
                 setSavedBooks(savedBooks.concat([savedBook]))
             })
             .catch(err => console.log('error message: ' + err));
-        // }
+        }
     }
 
     return (
@@ -59,12 +62,12 @@ function Results(props) {
                     {savedBooks.map(result => (
                         <Card>
                             <CardBody>
-                                <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
-                                <CardText>{result.volumeInfo.description}</CardText>
+                                <CardTitle tag="h5">{result.title}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.authors}</CardSubtitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
+                                <CardText>{result.description}</CardText>
                                 <Button
-                                    onClick={() => handleSave(result)}
+                                    onClick={() => handleSave(result)} 
                                 >
                                     Save
                                 </Button>
