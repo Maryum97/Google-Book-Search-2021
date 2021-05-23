@@ -4,6 +4,7 @@ const db = require("../models");
 module.exports = {
     findAll: async (req, res) => {
         try {
+            console.log('req from G.C.:', req);
             const { query: params } = req;
             const results = await axios.get(
                 "https://www.googleapis.com/books/v1/volumes", { params }

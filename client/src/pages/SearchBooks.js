@@ -20,7 +20,7 @@ function SearchBooks() {
     // declare function to load books
     const searchBooks = (query) => {
         console.log(query);
-        API.searchBook(query)
+        API.getBooks(query)
             .then(res => {
                 let results = res.data.items;
                 console.log(res.data.items);
