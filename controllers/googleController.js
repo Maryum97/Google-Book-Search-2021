@@ -8,8 +8,11 @@ module.exports = {
             const results = await axios.get(
                 "https://www.googleapis.com/books/v1/volumes", { params }
             );
+            
+            console.log('results: ', results);
+            console.log('results.data: ', results.data);
 
-            const apiBooks = await results.data.items.filter(
+            const apiBooks = results.data.items.filter(
                 (result) => 
                 result.volumeInfo.title &&
                 result.volumeInfo.infoLink &&
@@ -18,6 +21,8 @@ module.exports = {
                 result.volumeInfo.imageLinks &&
                 result.volumeInfo.imageLinks.thumbnail
             );
+
+            console.log('apiBooks: ', apiBooks);
 
             const dbBooks = await db.Book.find();
 
