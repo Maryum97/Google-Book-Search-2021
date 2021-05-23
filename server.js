@@ -1,27 +1,30 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const routes = require('./routes/index.js');
-const db = mongoose.connection;
+const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
-// Define middleware
+
+// Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Serves static assets
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('/client/build'))
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
 
-// API routes
+// Define API routes here
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
-db.on("Error on Mongo connection", error => console.error(error));
-db.once("connected", () => console.log("Success! You are connected to Mongoose"));
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
+
+mongoose.connect(MONGODB_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 
 app.listen(PORT, () => {
-  console.log(`API server now on port:${PORT}`);
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+  
