@@ -22,8 +22,8 @@ function SearchBooks() {
         console.log(query);
         API.searchBook(query)
             .then(res => {
-                let results = res.data;
-                console.log(res.data);
+                let results = res.data.items;
+                console.log(res.data.items);
 
                 let bookResults = results.map(result => {
                     result = {

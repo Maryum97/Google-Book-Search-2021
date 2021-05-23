@@ -43,7 +43,7 @@ function SearchResults(props) {
                 })
                 .catch(err => console.log('error message: ' + err));
         }
-        
+
         // otherwise, save it to db
         else {
         API.saveBook(bookToSave)
@@ -62,7 +62,7 @@ function SearchResults(props) {
                 <div>
                     {props.books.map(result => (
                         <Card>
-                            <CardBody key={result.id}>
+                            <CardBody key={result._id}>
                                 <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
