@@ -62,7 +62,7 @@ function SearchResults(props) {
                 <div>
                     {props.books.map(result => (
                         <Card>
-                            <CardBody>
+                            <CardBody key={result.id}>
                                 <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>

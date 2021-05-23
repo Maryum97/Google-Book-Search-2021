@@ -26,15 +26,6 @@ function SavedResults(props) {
     // declare function to handle the event of saving a book
     function handleSave(book) {
 
-        // define object that holds book properties
-        const bookToSave = {
-            _id: book.id,
-            title: book.title,
-            authors: book.authors,
-            description: book.description,
-            link: book.link
-        }
-
         // if book is already in the db, delete it on clicking 'save' button
         if (savedBooks.map(book => book._id).includes(book._id)) {
             API.deleteBook(book._id)
@@ -42,15 +33,6 @@ function SavedResults(props) {
                     savedBooks.filter(book => book._id !== deletedBook._id)
                 })
                 .catch(err => console.log('error message: ' + err));
-        }
-
-        // otherwise, save it to db
-        else {
-        API.saveBook(bookToSave)
-            .then(savedBook => {
-                setSavedBooks(savedBooks.concat([savedBook]))
-            })
-            .catch(err => console.log('error message: ' + err));
         }
     }
 
@@ -68,7 +50,7 @@ function SavedResults(props) {
                                 <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
                                 <CardText>{result.description}</CardText>
                                 <Button
-                                    onClick={() => handleSave(result)} 
+                                    onClick={() => handleSave(result)}
                                 >
                                     Unsave
                                 </Button>
