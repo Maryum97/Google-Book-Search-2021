@@ -31,10 +31,10 @@ function SavedResults() {
         // define object that holds book properties
         const savedBook = {
             _id: book.id,
-            title: book.title,
-            authors: book.authors,
-            description: book.description,
-            link: book.link
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            link: book.volumeInfo.link
         }
 
         console.log(savedBook);

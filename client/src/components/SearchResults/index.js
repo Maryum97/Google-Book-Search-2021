@@ -29,10 +29,10 @@ function SearchResults(props) {
         // define object that holds book properties
         const bookToSave = {
             _id: book.id,
-            title: book.title,
-            authors: book.authors,
-            description: book.description,
-            link: book.link
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            link: book.volumeInfo.link
         }
 
         // if book is already in the db, delete it on clicking 'save' button
@@ -43,7 +43,7 @@ function SearchResults(props) {
                 })
                 .catch(err => console.log('error message: ' + err));
         }
-
+        
         // otherwise, save it to db
         else {
         API.saveBook(bookToSave)
@@ -63,10 +63,10 @@ function SearchResults(props) {
                     {props.books.map(result => (
                         <Card>
                             <CardBody key={result.id}>
-                                <CardTitle tag="h5">{result.title}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.authors}</CardSubtitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
-                                <CardText>{result.description}</CardText>
+                                <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
+                                <CardText>{result.volumeInfo.description}</CardText>
                                 <Button
                                     onClick={() => handleSave(result)} 
                                 >

@@ -20,7 +20,7 @@ function SearchBooks() {
     // declare function to load books
     const searchBooks = (query) => {
         console.log(query);
-        API.getBooks(query)
+        API.searchBook(query)
             .then(res => {
                 let results = res.data;
                 console.log(res.data);
@@ -28,10 +28,10 @@ function SearchBooks() {
                 let bookResults = results.map(result => {
                     result = {
                         _id: result.id,
-                        title: result.title,
-                        authors: result.authors,
-                        description: result.description,
-                        link: result.previewLink
+                        title: result.volumeInfo.title,
+                        authors: result.volumeInfo.authors,
+                        description: result.volumeInfo.description,
+                        link: result.volumeInfo.previewLink
                     }
                     return result;
                 })
