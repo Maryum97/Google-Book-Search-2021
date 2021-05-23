@@ -33,21 +33,21 @@ function Results(props) {
         //         })
         //         .catch(err => console.log('error message: ' + err));
         // }
-        const bookToSave = {
-            title: book.title,
-            authors: book.authors,
-            description: book.description,
-            link: book.link
-        }
 
+        const bookToSave = {
+            _id: book.id,
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            link: book.volumeInfo.link
+        }
         // else {
-        API.saveBook(book)
-            .then(() => {
-                setSavedBooks(savedBooks.concat([bookToSave]))
+        API.saveBook(bookToSave)
+            .then(savedBook => {
+                setSavedBooks(savedBooks.concat([savedBook]))
             })
             .catch(err => console.log('error message: ' + err));
         // }
-        console.log(book);
     }
 
     return (
