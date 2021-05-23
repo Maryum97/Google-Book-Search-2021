@@ -5,9 +5,9 @@ import {
 } from 'reactstrap';
 import API from '../../utils/API';
 
-function SavedResults(props) {
-    console.log(props);
+function SavedResults() {
     // declare state variables
+    const [savedBook, setSavedBook] = useState({});
     const [savedBooks, setSavedBooks] = useState([]);
 
     // when the component mounts, make call to get saved books
@@ -18,9 +18,9 @@ function SavedResults(props) {
     // declare function to get saved books
     const getSavedBooks = () => {
         API.savedBooks()
-            .then(books => {
-                setSavedBooks(books);
-                console.log(books);
+            .then(savedBooks => {
+                setSavedBooks(savedBooks)
+                setSavedBook(savedBook);
             })
             .catch(err => console.log('error message: ' + err));
     }
@@ -29,13 +29,15 @@ function SavedResults(props) {
     function handleSave(book) {
 
         // define object that holds book properties
-        const savedBooks = {
+        const savedBook = {
             _id: book.id,
             title: book.title,
             authors: book.authors,
             description: book.description,
             link: book.link
         }
+
+        console.log(savedBook);
 
         // if book is already in the db, delete it on clicking 'save' button
         if (savedBooks.map(book => book._id).includes(book._id)) {
@@ -53,15 +55,15 @@ function SavedResults(props) {
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
-                    {savedBooks.map(result => (
+                    {savedBooks.map(savedBook => (
                         <Card>
-                            <CardBody key={result.id}>
-                                <CardTitle tag="h5">{result.title}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.authors}</CardSubtitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
-                                <CardText>{result.description}</CardText>
+                            <CardBody key={savedBook.id}>
+                                <CardTitle tag="h5">{savedBook.title}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">By {savedBook.authors}</CardSubtitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={savedBook.previewLink} target='_blank' rel="noreferrer">Link Here</a></CardSubtitle>
+                                <CardText>{savedBook.description}</CardText>
                                 <Button
-                                    onClick={() => handleSave(result)}
+                                    onClick={() => handleSave(savedBook)}
                                 >
                                     Unsave
                                 </Button>

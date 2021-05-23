@@ -8,7 +8,7 @@ import SavedResults from '../components/SavedResults';
 
 function SavedBooks(props) {
     console.log(props);
-    const [storedBooks, setSavedBooks] = useState([]);
+    const [savedBooks, setSavedBooks] = useState([]);
 
     useEffect(() => {
         storeBooks();
@@ -17,7 +17,7 @@ function SavedBooks(props) {
     function storeBooks () {
         API.savedBooks()
             .then(savedBooks => {
-                setSavedBooks(storedBooks = savedBooks);
+                setSavedBooks(savedBooks);
                 console.log(savedBooks);
             })
             .catch(err => console.error(err));
