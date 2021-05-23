@@ -19,14 +19,23 @@ function SavedResults(props) {
     const getSavedBooks = () => {
         API.savedBooks()
             .then(books => {
-                setSavedBooks(savedBooks = books);
-                console.log(savedBooks);
+                setSavedBooks(books);
+                console.log(books);
             })
             .catch(err => console.log('error message: ' + err));
     }
 
     // declare function to handle the event of saving a book
     function handleSave(book) {
+
+        // define object that holds book properties
+        const savedBooks = {
+            _id: book.id,
+            title: book.title,
+            authors: book.authors,
+            description: book.description,
+            link: book.link
+        }
 
         // if book is already in the db, delete it on clicking 'save' button
         if (savedBooks.map(book => book._id).includes(book._id)) {
@@ -40,11 +49,11 @@ function SavedResults(props) {
 
     return (
         <div>
-            {!props.books ? (
+            {!savedBooks ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
-                    {props.books.map(result => (
+                    {savedBooks.map(result => (
                         <Card>
                             <CardBody key={result.id}>
                                 <CardTitle tag="h5">{result.title}</CardTitle>
