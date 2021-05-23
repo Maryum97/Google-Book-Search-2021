@@ -37,10 +37,10 @@ function Results(props) {
         }
 
         // if book is already in the db, delete it on clicking 'save' button
-        if (savedBooks.map(book => book.title).includes(book.title)) {
-            API.deleteBook(book.title)
+        if (savedBooks.map(book => book._id).includes(book._id)) {
+            API.deleteBook(book._id)
                 .then(deletedBook => {
-                    savedBooks.filter(book => book.title !== deletedBook.title)
+                    savedBooks.filter(book => book._id !== deletedBook._id)
                 })
                 .catch(err => console.log('error message: ' + err));
         }
