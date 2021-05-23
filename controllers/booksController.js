@@ -7,13 +7,21 @@ module.exports = {
             .find(req.query)
             .sort({ date: -1 })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log('Error:', err);
+                res.status(422).json(err)
+            });
     },
     findById: function (req, res) {
+        console.log('finding book...');
+        db.Book
         db.Book
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log('Error:', err);
+                res.status(422).json(err)
+            });
     },
     create: function (req, res) {
         db.Book
@@ -28,7 +36,10 @@ module.exports = {
         db.Book
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log('Error:', err);
+                res.status(422).json(err)
+            });
     },
     remove: function (req, res) {
         db.Book
