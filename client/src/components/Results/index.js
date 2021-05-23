@@ -30,10 +30,10 @@ function Results(props) {
         // define object that holds book properties
         const bookToSave = {
             _id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors,
-            description: book.volumeInfo.description,
-            link: book.volumeInfo.link
+            title: book.title,
+            authors: book.authors,
+            description: book.description,
+            link: book.link
         }
 
         if (savedBooks.map(book => book.title).includes(book.title)) {
