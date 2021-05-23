@@ -9,9 +9,14 @@ This repository contains another one of my assignments, which was to create a Go
 
 There are two main pages in this website:
 1. <b>Search for Books</b> - Type a name of a book in the search-bar, and save/view any of the books that appear on the page.
+
+![Home](https://user-images.githubusercontent.com/73832871/119273589-7f347480-bc03-11eb-8613-74e1e7cdfa6e.png)
 <br>
 
 2. <b>Saved Books</b> - View the saved books, and delete when no longer needed on the list.
+
+![Saved](https://user-images.githubusercontent.com/73832871/119273593-82c7fb80-bc03-11eb-9cba-ca00e829e9a7.png)
+
 <br>
 
 Here is the link to the deployed application on <b>Heroku</b>:
@@ -23,8 +28,6 @@ Here is the link to the deployed application on <b>Heroku</b>:
 - [Instructions](#instructions)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Tests](#tests)
-- [Credits](#credits)
 - [Questions](#questions)
 
 ## 💾 Installations
