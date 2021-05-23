@@ -5,7 +5,7 @@ import API from '../utils/API';
 // import components
 import Jumbotron from '../components/Jumbotron';
 import FormBooks from '../components/FormBooks';
-import Results from '../components/Results';
+import SearchResults from '../components/SearchResults';
 
 function SearchBooks() {
     // declare state variables
@@ -19,9 +19,11 @@ function SearchBooks() {
 
     // declare function to load books
     const searchBooks = (query) => {
+        console.log(query);
         API.searchBook(query)
             .then(res => {
                 let results = res.data.items;
+                console.log(res.data.items);
 
                 results = results.map(result => {
                     result = {
@@ -33,8 +35,7 @@ function SearchBooks() {
                     }
                     return result;
                 })
-
-                console.log('results: ' + results, res.data.items);
+                console.log(results);
                 setBooks(res.data.items);
             })
             .catch(err => console.log('error message: ' + err));
@@ -67,11 +68,16 @@ function SearchBooks() {
                 <br></br>
                 <Row>
                     <h2>Results</h2>
-                    <Results
+                    <SearchResults
                         books={books}
                     />
                 </Row>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

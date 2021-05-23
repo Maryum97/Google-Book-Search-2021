@@ -4,7 +4,7 @@ import API from '../utils/API';
 
 // import components
 import Jumbotron from '../components/Jumbotron';
-import Results from '../components/Results';
+import SavedResults from '../components/SavedResults';
 
 class SavedBooks extends Component {
     state = {
@@ -28,8 +28,13 @@ class SavedBooks extends Component {
                 <br></br>
                 <Container>
                     <h2>Saved Books</h2>
-                    <Results books={this.state.savedBooks} />
+                    <SavedResults books={this.state.savedBooks} />
                 </Container>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
             </div>
         )
     }
