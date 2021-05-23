@@ -18,6 +18,7 @@ function Results(props) {
     const getSavedBooks = () => {
         API.savedBooks()
             .then(books => {
+                console.log(books);
                 setSavedBooks(books);
             })
             .catch(err => console.log('error message: ' + err));
@@ -51,11 +52,11 @@ function Results(props) {
 
     return (
         <div>
-            {!props.books ? (
+            {!savedBooks ? (
                 <h1 className="text-center">No Results to Display</h1>
             ) : (
                 <div>
-                    {props.books.map(result => (
+                    {savedBooks.map(result => (
                         <Card>
                             <CardBody>
                                 <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
