@@ -13,7 +13,6 @@ module.exports = {
             });
     },
     findById: function (req, res) {
-        console.log('finding book...');
         db.Book
         db.Book
             .findById(req.params.id)
@@ -35,6 +34,7 @@ module.exports = {
             });
     },
     update: function (req, res) {
+        console.log('updating book...')
         db.Book
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
@@ -44,6 +44,7 @@ module.exports = {
             });
     },
     remove: function (req, res) {
+        console.log('deleting book...');
         db.Book
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())

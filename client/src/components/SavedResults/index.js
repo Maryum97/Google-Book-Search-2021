@@ -18,7 +18,7 @@ function SavedResults(props) {
     const getSavedBooks = () => {
         API.savedBooks()
             .then(books => {
-                setSavedBooks(books);
+                setSavedBooks(savedBooks = books);
             })
             .catch(err => console.log('error message: ' + err));
     }

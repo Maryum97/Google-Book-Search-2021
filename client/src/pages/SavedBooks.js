@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'reactstrap';
 import API from '../utils/API';
 
@@ -6,41 +6,39 @@ import API from '../utils/API';
 import Jumbotron from '../components/Jumbotron';
 import SavedResults from '../components/SavedResults';
 
-class SavedBooks extends Component {
-    state = {
-        savedBooks: [],
-    }
+function SavedBooks(props) {
+    const [savedBooks, setSavedBooks] = useState([]);
 
-    componentDidMount() {
+    useEffect(() => {
+        storeBooks();
+    }, []);
+
+    function storeBooks () {
         API.savedBooks()
             .then(savedBooks => {
-                this.setState({ savedBooks: savedBooks });
+                setSavedBooks(savedBooks = savedBooks);
                 console.log(savedBooks);
             })
             .catch(err => console.error(err));
     }
-
-    render() {
-
-        return (
-            <div>
-                <Jumbotron
-                    heading='Google Books Search'
-                    text='View your saved books here'
-                />
-                <br></br>
-                <Container>
-                    <h2>Saved Books</h2>
-                    <SavedResults books={this.state.savedBooks} />
-                </Container>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-            </div>
-        )
-    }
+    
+    return (
+        <div>
+            <Jumbotron
+                heading='Google Books Search'
+                text='View your saved books here'
+            />
+            <br></br>
+            <Container>
+                <h2>Saved Books</h2>
+                <SavedResults books={props.savedBooks} />
+            </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+        </div>
+    )
 }
-
 export default SavedBooks;
