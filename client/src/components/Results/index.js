@@ -36,6 +36,7 @@ function Results(props) {
             link: book.link
         }
 
+        // if book is already in the db, delete it on clicking 'save' button
         if (savedBooks.map(book => book.title).includes(book.title)) {
             API.deleteBook(book.title)
                 .then(deletedBook => {
@@ -44,6 +45,7 @@ function Results(props) {
                 .catch(err => console.log('error message: ' + err));
         }
 
+        // otherwise, save it to db
         else {
         API.saveBook(bookToSave)
             .then(savedBook => {
