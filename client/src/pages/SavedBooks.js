@@ -7,7 +7,8 @@ import Jumbotron from '../components/Jumbotron';
 import SavedResults from '../components/SavedResults';
 
 function SavedBooks(props) {
-    const [savedBooks, setSavedBooks] = useState([]);
+    console.log(props);
+    const [storedBooks, setSavedBooks] = useState([]);
 
     useEffect(() => {
         storeBooks();
@@ -16,12 +17,12 @@ function SavedBooks(props) {
     function storeBooks () {
         API.savedBooks()
             .then(savedBooks => {
-                setSavedBooks(savedBooks = savedBooks);
+                setSavedBooks(storedBooks = savedBooks);
                 console.log(savedBooks);
             })
             .catch(err => console.error(err));
     }
-    
+
     return (
         <div>
             <Jumbotron

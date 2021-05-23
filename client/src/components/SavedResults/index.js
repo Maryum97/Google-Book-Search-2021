@@ -6,6 +6,7 @@ import {
 import API from '../../utils/API';
 
 function SavedResults(props) {
+    console.log(props);
     // declare state variables
     const [savedBooks, setSavedBooks] = useState([]);
 
@@ -19,6 +20,7 @@ function SavedResults(props) {
         API.savedBooks()
             .then(books => {
                 setSavedBooks(savedBooks = books);
+                console.log(savedBooks);
             })
             .catch(err => console.log('error message: ' + err));
     }

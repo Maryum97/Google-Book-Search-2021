@@ -37,6 +37,7 @@ function SearchBooks() {
                 })
                 console.log(results);
                 setBooks(res.data.items);
+                console.log(res.data.items);
             })
             .catch(err => console.log('error message: ' + err));
     }
