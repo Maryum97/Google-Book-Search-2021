@@ -28,7 +28,8 @@ function SearchBooks() {
                         _id: result.id,
                         title: result.volumeInfo.title,
                         authors: result.volumeInfo.authors,
-                        description: result.volumeInfo.description
+                        description: result.volumeInfo.description,
+                        link: result.volumeInfo.previewLink
                     }
                     return result;
                 })
@@ -66,7 +67,7 @@ function SearchBooks() {
                 <br></br>
                 <Row>
                     <h2>Results</h2>
-                    <Results 
+                    <Results
                         books={books}
                     />
                 </Row>

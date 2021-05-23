@@ -8,6 +8,7 @@ import API from '../../utils/API';
 function Results(props) {
     // declare state variables
     const [savedBooks, setSavedBooks] = useState([]);
+    const [searchedBooks, setSearchedBooks] = useState();
 
     // when the component mounts, make call to get saved books
     useEffect(() => {
@@ -32,14 +33,19 @@ function Results(props) {
         //         })
         //         .catch(err => console.log('error message: ' + err));
         // }
+        const bookToSave = {
+            title: book.title,
+            authors: book.authors,
+            description: book.description,
+            link: book.link
+        }
 
         // else {
-            API.saveBook(book)
-                .then(savedBook => {
-                    console.log('Hello, testing!');
-                    setSavedBooks(savedBooks.concat([savedBook]))
-                })
-                .catch(err => console.log('error message: ' + err));
+        API.saveBook(book)
+            .then(() => {
+                setSavedBooks(savedBooks.concat([bookToSave]))
+            })
+            .catch(err => console.log('error message: ' + err));
         // }
         console.log(book);
     }
@@ -55,6 +61,7 @@ function Results(props) {
                             <CardBody>
                                 <CardTitle tag="h5">{result.volumeInfo.title}</CardTitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">By {result.volumeInfo.authors}</CardSubtitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted"><a href={result.volumeInfo.previewLink} target='_blank'>Link Here</a></CardSubtitle>
                                 <CardText>{result.volumeInfo.description}</CardText>
                                 <Button
                                     onClick={() => handleSave(result)}
